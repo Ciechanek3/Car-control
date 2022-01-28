@@ -77,10 +77,8 @@ public class CarMovement : MonoBehaviour
 
     private void HandleVerticalMovement()
     {
-        Debug.LogError(wheelColliders[1].motorTorque);
         for (int i = 0; i < wheelColliders.Count; i++)
         {
-            Debug.Log(wheelColliders[i].motorTorque);
             if (VerticalInput > 0 && wheelColliders[i].motorTorque < maxSpeed || VerticalInput < 0 && wheelColliders[i].motorTorque > maxReverseSpeed)
             {
                 wheelColliders[i].motorTorque += VerticalInput * motorForce;
