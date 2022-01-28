@@ -16,6 +16,10 @@ public class CarMovement : MonoBehaviour
     [SerializeField]
     private float motorForce;
     [SerializeField]
+    private float maxSpeed;
+    [SerializeField]
+    private float maxReverseSpeed;
+    [SerializeField]
     private float brakeForce;
     [SerializeField]
     private float turnRadius;
@@ -66,16 +70,52 @@ public class CarMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        for(int i = 0; i < wheelColliders.Count; i++)
+        HandleVerticalMovement();
+        HandleHorizontalMovement();
+        HandleBraking();
+    }
+
+    private void HandleVerticalMovement()
+    {
+        Debug.LogError(wheelColliders[1].motorTorque);
+        for (int i = 0; i < wheelColliders.Count; i++)
         {
-            wheelColliders[i].motorTorque = VerticalInput * motorForce;
+            Debug.Log(wheelColliders[i].motorTorque);
+            if (VerticalInput > 0 && wheelColliders[i].motorTorque < maxSpeed || VerticalInput < 0 && wheelColliders[i].motorTorque > maxReverseSpeed)
+            {
+                wheelColliders[i].motorTorque += VerticalInput * motorForce;
+            }
+            else
+            {
+                if(wheelColliders[i].motorTorque > 0)
+                {
+                    wheelColliders[i].motorTorque -= motorForce * 2;
+                    if(wheelColliders[i].motorTorque < 0)
+                    {
+                        wheelColliders[i].motorTorque = 0;
+                    }
+                }
+                else if(wheelColliders[i].motorTorque < 0)
+                {
+                    wheelColliders[i].motorTorque += motorForce * 2;
+                    if (wheelColliders[i].motorTorque > 0)
+                    {
+                        wheelColliders[i].motorTorque = 0;
+                    }
+                }
+            }
+            
         }
-        if(HorizontalInput > 0)
+    }
+
+    private void HandleHorizontalMovement()
+    {
+        if (HorizontalInput > 0)
         {
-            wheelColliders[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius - (1.5f /2)) * HorizontalInput;
+            wheelColliders[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius - (1.5f / 2)) * HorizontalInput;
             wheelColliders[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius + (1.5f / 2)) * HorizontalInput;
         }
-        else if(HorizontalInput < 0)
+        else if (HorizontalInput < 0)
         {
             wheelColliders[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius + (1.5f / 2)) * HorizontalInput;
             wheelColliders[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius - (1.5f / 2)) * HorizontalInput;
@@ -86,10 +126,7 @@ public class CarMovement : MonoBehaviour
             wheelColliders[1].steerAngle = 0;
             rb.angularVelocity = Vector3.zero;
         }
-
-        HandleBraking();
     }
-
     private void HandleBraking()
     {
         if(IsBraking)

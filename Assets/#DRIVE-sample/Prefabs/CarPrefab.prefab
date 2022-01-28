@@ -363,6 +363,8 @@ MonoBehaviour:
   - {fileID: 9217748268472261608}
   centerOfMass: {fileID: 1496246043436675501}
   motorForce: 2000
+  maxSpeed: 5000
+  maxReverseSpeed: -5000
   brakeForce: 900000
   turnRadius: 3
   downForce: 50
