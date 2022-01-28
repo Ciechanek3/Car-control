@@ -136,4 +136,9 @@ public class CarMovement : MonoBehaviour
             StartGame.Invoke();
         }
     }
+
+    public void FlipCar()
+    {
+        rb.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
 }
