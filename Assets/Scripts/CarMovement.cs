@@ -69,7 +69,6 @@ public class CarMovement : MonoBehaviour
         for(int i = 0; i < wheelColliders.Count; i++)
         {
             wheelColliders[i].motorTorque = VerticalInput * motorForce;
-            Debug.LogError(wheelColliders[i].forwardFriction);
         }
         if(HorizontalInput > 0)
         {
