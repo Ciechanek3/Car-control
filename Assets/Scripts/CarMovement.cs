@@ -87,24 +87,42 @@ public class CarMovement : MonoBehaviour
             }
             else
             {
-                if(wheelColliders[i].motorTorque > 0)
-                {
-                    wheelColliders[i].motorTorque -= motorForce * 2;
-                    if(wheelColliders[i].motorTorque < 0)
-                    {
-                        wheelColliders[i].motorTorque = 0;
-                    }
-                }
-                else if(wheelColliders[i].motorTorque < 0)
-                {
-                    wheelColliders[i].motorTorque += motorForce * 2;
-                    if (wheelColliders[i].motorTorque > 0)
-                    {
-                        wheelColliders[i].motorTorque = 0;
-                    }
-                }
+                GapToMaxSpeed(wheelColliders[i]);
+                StopIfNotPressing(wheelColliders[i]);
+            }  
+        }
+    }
+
+    private void GapToMaxSpeed(WheelCollider wheelCollider)
+    {
+        if (wheelCollider.motorTorque > maxSpeed)
+        {
+            wheelCollider.motorTorque = maxSpeed;
+        }
+
+        if (wheelCollider.motorTorque < maxReverseSpeed)
+        {
+            wheelCollider.motorTorque = maxReverseSpeed;
+        }
+    }
+
+    private void StopIfNotPressing(WheelCollider wheelCollider)
+    {
+        if (wheelCollider.motorTorque > 0)
+        {
+            wheelCollider.motorTorque -= motorForce * 2;
+            if (wheelCollider.motorTorque < 0)
+            {
+                wheelCollider.motorTorque = 0;
             }
-            
+        }
+        else if (wheelCollider.motorTorque < 0)
+        {
+            wheelCollider.motorTorque += motorForce * 2;
+            if (wheelCollider.motorTorque > 0)
+            {
+                wheelCollider.motorTorque = 0;
+            }
         }
     }
 
