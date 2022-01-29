@@ -657,7 +657,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1174576966}
   - component: {fileID: 1174576965}
-  - component: {fileID: 1174576964}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -665,18 +664,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1174576964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174576963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbd129cdc3c3dd94b89a8346c23767f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1174576965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,7 +676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9328125ca649a4a83b17953fa87721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 1174576964}
 --- !u!4 &1174576966
 Transform:
   m_ObjectHideFlags: 0
@@ -11619,7 +11605,7 @@ PrefabInstance:
     - target: {fileID: 2237134034169110097, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
       propertyPath: playerInput
       value: 
-      objectReference: {fileID: 1174576964}
+      objectReference: {fileID: 0}
     - target: {fileID: 2237134034169110097, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
       propertyPath: wheels.Array.size
       value: 4
@@ -11707,7 +11693,7 @@ PrefabInstance:
     - target: {fileID: 6198923599800140634, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
       propertyPath: playerInput
       value: 
-      objectReference: {fileID: 1174576964}
+      objectReference: {fileID: 0}
     - target: {fileID: 6202522606156417927, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
       propertyPath: m_Mass
       value: 150
@@ -11783,7 +11769,7 @@ PrefabInstance:
     - target: {fileID: 6958958710431163653, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
       propertyPath: playerInput
       value: 
-      objectReference: {fileID: 1174576964}
+      objectReference: {fileID: 0}
     - target: {fileID: 7235578786841187160, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6
@@ -11859,7 +11845,7 @@ PrefabInstance:
     - target: {fileID: 8895078425320096969, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
       propertyPath: playerInput
       value: 
-      objectReference: {fileID: 1174576964}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8768471065033445071, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aca7c4fa253d844648dba3f7f6ac438c, type: 3}
