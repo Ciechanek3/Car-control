@@ -283,7 +283,6 @@ GameObject:
   - component: {fileID: 6262503094716923896}
   - component: {fileID: 6907880588443520452}
   - component: {fileID: 4840713827848458934}
-  - component: {fileID: 2695450657906555644}
   m_Layer: 0
   m_Name: car_desert
   m_TagString: Untagged
@@ -351,47 +350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d3992f78db6f54439ca3be4fb8b8991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelColliders:
-  - {fileID: 7788661613366128329}
-  - {fileID: 226838205075514506}
-  - {fileID: 5672029177377863904}
-  - {fileID: 6202522606156417927}
-  wheels:
-  - {fileID: 3411367367999477652}
-  - {fileID: 4028634717273904751}
-  - {fileID: 4485988803922172162}
-  - {fileID: 9217748268472261608}
+  rb: {fileID: 6907880588443520452}
   centerOfMass: {fileID: 1496246043436675501}
-  motorForce: 2000
-  maxSpeed: 5000
-  maxReverseSpeed: -5000
-  brakeForce: 900000
-  turnRadius: 3
-  downForce: 50
-  carEffects: {fileID: 2695450657906555644}
---- !u!114 &2695450657906555644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144304758992530311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43f072f7f7fa63c4fbe4996050d381a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trailRenderers:
-  - {fileID: 48094800267047044}
-  - {fileID: 8113711013020567272}
-  - {fileID: 4852405200620883436}
-  - {fileID: 2083407615717533187}
-  smokeParticle: {fileID: 5712020794649158671}
-  brakeLightOn: {fileID: 2100000, guid: e4f3b46b154b72948bb918b0cedb547e, type: 2}
-  brakeLightOff: {fileID: 2100000, guid: 55e9f16dbdc6510448faadf41011d1c5, type: 2}
-  lights:
-  - {fileID: 89019463467275192}
-  - {fileID: 9128275374517539103}
+  carBehavior: {fileID: 6751089849216928748}
+  gameManager: {fileID: 0}
 --- !u!1 &1339960390687252047
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +586,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1144304758992828327}
+  - {fileID: 9104084337837701850}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1123,6 +1086,141 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6751089849216928748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9104084337837701850}
+  - component: {fileID: 6858876340161283857}
+  - component: {fileID: 8651777602884489027}
+  - component: {fileID: 2624905985086299141}
+  - component: {fileID: 8895078425320096969}
+  - component: {fileID: 6198923599800140634}
+  m_Layer: 0
+  m_Name: car_behavior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9104084337837701850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751089849216928748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1250980366587064236}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6858876340161283857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751089849216928748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f072f7f7fa63c4fbe4996050d381a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailRenderers:
+  - {fileID: 48094800267047044}
+  - {fileID: 8113711013020567272}
+  - {fileID: 4852405200620883436}
+  - {fileID: 2083407615717533187}
+  smokeParticle: {fileID: 5712020794649158671}
+  brakeLightOn: {fileID: 2100000, guid: e4f3b46b154b72948bb918b0cedb547e, type: 2}
+  brakeLightOff: {fileID: 2100000, guid: 55e9f16dbdc6510448faadf41011d1c5, type: 2}
+  lights:
+  - {fileID: 89019463467275192}
+  - {fileID: 9128275374517539103}
+--- !u!114 &8651777602884489027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751089849216928748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fecd0406973dc4981b8c4e6a60b54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2624905985086299141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751089849216928748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa9c79d95ef34c94db0248ea4070a543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 0}
+--- !u!114 &8895078425320096969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751089849216928748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596a901016b59334b8e10012b89db79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelColliders:
+  - {fileID: 7788661613366128329}
+  - {fileID: 226838205075514506}
+  - {fileID: 6202522606156417927}
+  - {fileID: 5672029177377863904}
+  playerInput: {fileID: 0}
+  carEffects: {fileID: 6858876340161283857}
+  rb: {fileID: 6907880588443520452}
+  carSpecification: {fileID: 11400000, guid: 95f2fb129f09bd6478febde7d7341b24, type: 2}
+  wheels:
+  - {fileID: 3411367367999477652}
+  - {fileID: 4028634717273904751}
+  - {fileID: 4485988803922172162}
+  - {fileID: 9217748268472261608}
+--- !u!114 &6198923599800140634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6751089849216928748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8fb46ebef60bf4a86fa6215658be05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelColliders:
+  - {fileID: 7788661613366128329}
+  - {fileID: 226838205075514506}
+  - {fileID: 6202522606156417927}
+  - {fileID: 5672029177377863904}
+  playerInput: {fileID: 0}
+  carEffects: {fileID: 6858876340161283857}
+  rb: {fileID: 6907880588443520452}
+  carSpecification: {fileID: 11400000, guid: 95f2fb129f09bd6478febde7d7341b24, type: 2}
+  wheels:
+  - {fileID: 3411367367999477652}
+  - {fileID: 4028634717273904751}
+  - {fileID: 4485988803922172162}
+  - {fileID: 9217748268472261608}
 --- !u!1 &7209515695573147443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,13 +1840,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b526ed393c0ad14a8586d5ea4e4f6fb, type: 3}
---- !u!4 &7817327809394540033 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4607612589153471822, guid: 1b526ed393c0ad14a8586d5ea4e4f6fb, type: 3}
-  m_PrefabInstance: {fileID: 6020535369968268111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &5712020794649158671 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2073927022229788480, guid: 1b526ed393c0ad14a8586d5ea4e4f6fb, type: 3}
+  m_PrefabInstance: {fileID: 6020535369968268111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7817327809394540033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4607612589153471822, guid: 1b526ed393c0ad14a8586d5ea4e4f6fb, type: 3}
   m_PrefabInstance: {fileID: 6020535369968268111}
   m_PrefabAsset: {fileID: 0}

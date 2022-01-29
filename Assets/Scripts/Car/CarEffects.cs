@@ -81,19 +81,6 @@ public class CarEffects : MonoBehaviour
         smokeFlag = false;
     }
 
-    private void StopEmitter()
-    {
-        if(tireMarksFlag)
-        {
-            return;
-        }
-        foreach (TrailRenderer trail in trailRenderers)
-        {
-            trail.emitting = true;
-        }
-        tireMarksFlag = true;
-    }
-
     private void StartEmitter()
     {
         if (!tireMarksFlag)
@@ -106,4 +93,18 @@ public class CarEffects : MonoBehaviour
         }
         tireMarksFlag = false;
     }
+
+    private void StopEmitter()
+    {
+        if (tireMarksFlag)
+        {
+            return;
+        }
+        foreach (TrailRenderer trail in trailRenderers)
+        {
+            trail.emitting = true;
+        }
+        tireMarksFlag = true;
+    }
+
 }

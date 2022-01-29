@@ -5,16 +5,16 @@ using UnityEngine;
 public class ToolTip : MonoBehaviour
 {
     [SerializeField]
-    private CarMovement carMovement;
+    private GameManager gameManager;
 
     private void OnEnable()
     {
-        carMovement.StartGame += DisableToolTip;
+        gameManager.StartGame += DisableToolTip;
     }
 
     private void OnDisable()
     {
-        carMovement.StartGame -= DisableToolTip;
+        gameManager.StartGame -= DisableToolTip;
     }
 
     private void DisableToolTip()
