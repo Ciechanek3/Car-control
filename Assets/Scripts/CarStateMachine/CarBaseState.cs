@@ -7,8 +7,6 @@ public abstract class CarBaseState : MonoBehaviour
     [SerializeField]
     protected List<WheelCollider> wheelColliders;
     [SerializeField]
-    protected PlayerInput playerInput;
-    [SerializeField]
     protected CarEffects carEffects;
     [SerializeField]
     protected Rigidbody rb;
@@ -22,6 +20,9 @@ public abstract class CarBaseState : MonoBehaviour
     protected float motorForce;
     protected float turnRadius;
     protected float stopMultiplier;
+    protected float horizontalInput;
+    protected float verticalInput;
+    protected bool isBraking;
 
     protected virtual void Awake()
     {
@@ -29,16 +30,23 @@ public abstract class CarBaseState : MonoBehaviour
         downForce = carSpecification.DownForce;
         motorForce = carSpecification.MotorForce;
         turnRadius = carSpecification.TurnRadius;
-        stopMultiplier = carSpecification.StopMultiplier;
+        stopMultiplier = carSpecification.StopMultiplier;  
+    }
+
+    protected void Update()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        isBraking = (Input.GetAxis("Brake") != 0) ? true : false;
     }
 
     public abstract Type Tick();
 
     protected void HandleBraking()
     {
-        carEffects.CheckIfBraking(!playerInput.IsBraking);
-        carEffects.SwitchBrakeLights(playerInput.IsBraking);
-        if (playerInput.IsBraking)
+        carEffects.CheckIfBraking(!isBraking);
+        carEffects.SwitchBrakeLights(isBraking);
+        if (isBraking)
         {
             wheelColliders[2].brakeTorque = brakeForce;
             wheelColliders[3].brakeTorque = brakeForce;
@@ -52,15 +60,15 @@ public abstract class CarBaseState : MonoBehaviour
 
     protected void HandleHorizontalMovement()
     {
-        if (playerInput.HorizontalInput > 0)
+        if (horizontalInput > 0)
         {
-            wheelColliders[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius - (1.5f / 2)) * playerInput.HorizontalInput;
-            wheelColliders[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius + (1.5f / 2)) * playerInput.HorizontalInput;
+            wheelColliders[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius - (1.5f / 2)) * horizontalInput;
+            wheelColliders[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius + (1.5f / 2)) * horizontalInput;
         }
-        else if (playerInput.HorizontalInput < 0)
+        else if (horizontalInput < 0)
         {
-            wheelColliders[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius + (1.5f / 2)) * playerInput.HorizontalInput;
-            wheelColliders[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius - (1.5f / 2)) * playerInput.HorizontalInput;
+            wheelColliders[0].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius + (1.5f / 2)) * horizontalInput;
+            wheelColliders[1].steerAngle = Mathf.Rad2Deg * Mathf.Atan(2.55f / turnRadius - (1.5f / 2)) * horizontalInput;
         }
         else
         {

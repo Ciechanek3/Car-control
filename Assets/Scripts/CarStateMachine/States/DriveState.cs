@@ -20,17 +20,17 @@ public class DriveState : CarBaseState
         UpdateWheels();
         AddDownforce();
         carEffects.CheckIfSmoking(Input.GetAxis("Vertical") != 0);
-        carEffects.SwitchBrakeLights(playerInput.VerticalInput < 0);
+        carEffects.SwitchBrakeLights(verticalInput < 0);
         for (int i = 0; i < wheelColliders.Count; i++)
         {
-            if (playerInput.VerticalInput > 0 && wheelColliders[i].motorTorque < maxSpeed || playerInput.VerticalInput < 0 && wheelColliders[i].motorTorque > maxReverseSpeed)
+            if (verticalInput > 0 && wheelColliders[i].motorTorque < maxSpeed || verticalInput < 0 && wheelColliders[i].motorTorque > maxReverseSpeed)
             {
-                wheelColliders[i].motorTorque += playerInput.VerticalInput * motorForce;
+                wheelColliders[i].motorTorque += verticalInput * motorForce;
             }
             else
             {
                 GapToMaxSpeed(wheelColliders[i]);
-                if(playerInput.VerticalInput == 0)
+                if(verticalInput == 0)
                 {
                     return typeof(StopState);
                 }              

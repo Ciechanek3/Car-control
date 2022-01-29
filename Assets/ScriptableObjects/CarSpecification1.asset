@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acca1647f6c2a3840a050b407f72fe39, type: 3}
   m_Name: CarSpecification1
   m_EditorClassIdentifier: 
-  maxSpeed: 5000
-  maxReverseSpeed: 5000
+  maxSpeed: 2000
+  maxReverseSpeed: 2000
   motorForce: 2000
   brakeForce: 900000
   downForce: 50

@@ -9,7 +9,7 @@ public class StopState : CarBaseState
         AddDownforce();
         HandleHorizontalMovement();
         UpdateWheels();
-        if (playerInput.VerticalInput != 0)
+        if (verticalInput != 0)
         {
             return typeof(DriveState);
         }
